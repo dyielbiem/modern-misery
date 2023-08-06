@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  @apply box-border text-text 
+}
+
+body{
+  @apply m-0 p-0 bg-background
+}
+
+input, textarea{
+  @apply bg-text text-background text-base
+}
