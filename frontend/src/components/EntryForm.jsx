@@ -164,6 +164,7 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
             ${type === "UPDATE" ? `${visibility ? 'flex' : 'hidden'}` : ''}
                         items-center
                         sm:justify-center
+                        z-50 lg:z-auto
                         self-start
                         fixed lg:static
                         top-0 lg:top-auto
@@ -181,7 +182,7 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
                             w-full sm:w-[35rem] lg:w-full`}>
                     <div className="flex items-center justify-between
                                 mb-2">
-                        <h2 className="text-2xl lg:text-3xl 
+                        <h2 className="text-2xl lg:text-3xl font-heading
                                        font-bold ">{formHeader}</h2>
                         <AiOutlineClose className="text-4xl bg-secondary p-2
                                                lg:hidden rounded-full"
@@ -198,7 +199,7 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
                     <div className="rounded-lg px-2 py-2 bg-text flex gap-1 flex-wrap">
                         {newTags && newTags.map((newTag, index) => (
                             <div key={index} className="flex bg-primary text-background px-2 rounded-lg gap-1 items-center justify-center" >
-                                <span className="text-background">
+                                <span className="text-background font-semibold break-all">
                                     {newTag}
                                 </span>
                                 <button type="button" className="font-extrabold text-2xl items-center"
@@ -211,7 +212,7 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
                     <button type="submit"
                         className={`rounded-full text-text
                                     w-full px-4 py-3 mt-2 text-2xl font-bold
-                                    bg-accent
+                                    bg-accent 
                                     disabled:opacity-60 disabled:cursor-not-allowed`}
                         onClick={() => setVisibility(false)}
                         disabled={disableButton}>{buttonText}</button>

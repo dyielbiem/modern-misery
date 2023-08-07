@@ -30,7 +30,7 @@ const SearchEntry = () => {
 
             const entryJSON = await entryResponse.json();
 
-            setEntry(entryJSON);
+            setEntry({ ...entryJSON, submittedDate: new Date(entryJSON.submittedDate).toUTCString() });
 
         } catch (error) {
             console.log(error);
@@ -48,9 +48,10 @@ const SearchEntry = () => {
         ({
             ...prevEntry,
             title: updatedEntry.title ? updatedEntry.title : prevEntry.title,
-            body: updatedEntry.body ? updatedEntry.body : prevEntry.body,
+            body: updatedEntry.body ? String(updatedEntry.body).trim() : prevEntry.body,
             name: updatedEntry.name ? updatedEntry.name : "Faceless",
             tags: updatedEntry.tags,
+            submittedDate: new Date(prevEntry.submittedDate).toUTCString()
         })
         );
     }
@@ -72,8 +73,8 @@ const SearchEntry = () => {
                                         flex gap-4 absolute
                                         right-8
                                         top-8">
-                            <FaPen onClick={() => setFormVisibility(prevState => !prevState)} />
-                            <FaTrashAlt onClick={showDeleteForm} />
+                            <FaPen onClick={() => setFormVisibility(prevState => !prevState)} className="hover:fill-primary hover:cursor-pointer" />
+                            <FaTrashAlt onClick={showDeleteForm} className="hover:fill-primary hover:cursor-pointer" />
                         </div>
                     </div>
                     <UpdatedEntry getUpdatedEntry={getUpdatedEntry}

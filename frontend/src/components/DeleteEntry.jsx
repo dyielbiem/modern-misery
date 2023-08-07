@@ -38,7 +38,6 @@ const DeleteEntry = ({ visibility, setShowDelete }) => {
     }
 
     useEffect(() => {
-        console.log(inputValue);
         if (inputValue === "confirm") {
             setIsButtonDisabled(false);
         } else {
@@ -49,11 +48,11 @@ const DeleteEntry = ({ visibility, setShowDelete }) => {
     return (
         <>
             <div className={`${visibility ? 'fixed' : 'hidden'} 
-                            w-screen h-screen top-0 left-0 flex 
+                            w-screen h-screen top-0 left-0 flex z-50 
                             items-center justify-center bg-[rgba(0,0,0,0.5)]`}>
                 <div className='bg-lighter-bg rounded-2xl flex flex-col 
-                                z-50 items-center justify-center
-                                mx-4
+                                items-center justify-center
+                                mx-4 max-w-xl
                                 p-6 sm:p-12
                                 gap-y-2 sm:gap-y-3'>
                     <IoCloseSharp className='self-end bg-secondary rounded-full p-2
@@ -61,20 +60,20 @@ const DeleteEntry = ({ visibility, setShowDelete }) => {
                         onClick={() => setShowDelete(false)} />
                     <PiSealWarningFill className='fill-red-800
                                                   text-7xl lg:text-8xl' />
-                    <h2 className='font-extrabold text-red-800 text-center
+                    <h2 className='font-extrabold text-red-800 text-center font-heading
                                    text-2xl sm:text-3xl lg:text-4xl'>Confirm Delete</h2>
                     <div className='grid text-center
                                     text-base md:text-lg
                                     gap-y-2 sm:gap-y-3'>
                         <p className='max-w-[55ch]'>Please type "confirm" in the field below to complete
                             the deletion of your entry {' '}
-                            <span className='font-bold'>
-                                ID: <span className=' break-all'>{params.id}</span>
+                            <span className='font-bold font-heading'>
+                                ID: <span className=' break-all font-heading'>{params.id}</span>
                             </span>
                         </p>
                         <input type="text" placeholder='type confirm' ref={confirmRef}
                             className='w-full bg-text
-                                     border-red-800 outline-none
+                                     border-red-700 outline-none
                                        py-1 
                                        px-2 
                                        text-base md:text-lg
@@ -83,6 +82,7 @@ const DeleteEntry = ({ visibility, setShowDelete }) => {
                             onChange={(event) => setInputValue(event.target.value)} />
                     </div>
                     <button className='bg-red-800 text-text w-full
+                                        disabled:hover:bg-red-800 hover:hover:bg-red-700
                                         font-bold rounded-full
                                         text-lg md:text-xl
                                         px-4 

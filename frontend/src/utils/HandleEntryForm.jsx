@@ -18,7 +18,10 @@ export const createEntry = async (parameter) => {
 
         if (!res.ok) return console.log(json.Error);
 
-        dispatch({ type: "CREATE_ENTRY", payload: json })
+        dispatch({
+            type: "CREATE_ENTRY",
+            payload: { ...json, submittedDate: new Date(json.submittedDate).toUTCString() }
+        })
 
         setID(json._id);
         setDisplay(true);

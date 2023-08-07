@@ -16,9 +16,9 @@ const Navbar = () => {
                                py-4 sm:py-6'>
                 <div className="flex">
                     <Link to="/">
-                        <h1 className={`font-bold 
-                                        text-2xl sm:text-3xl`}
-                        >Virtual Block</h1>
+                        <h1 className={`font-bold font-heading
+                                        text-3xl lg:text-4xl`}
+                        >Modern Misery</h1>
                     </Link>
                 </div>
                 <SearchBar setSmallScreenVisibility={setShowSearchBar}

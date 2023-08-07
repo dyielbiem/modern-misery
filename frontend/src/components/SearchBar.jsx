@@ -34,7 +34,8 @@ const SearchBar = ({ setSmallScreenVisibility, smallScreenVisibility }) => {
                         gap-4`}
             onClick={handleSearchClick}>
             <BsSearch className="fill-secondary
-                                 text-lg flex-shrink-0" />
+                                 text-lg flex-shrink-0 hover:cursor-text
+                                 " />
             <input type="text"
                 ref={searchRef}
                 placeholder="Search Your Entry"

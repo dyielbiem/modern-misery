@@ -8,9 +8,9 @@ const SuccessModal = ({ children, visibility, returnToHome, setVisibility, messa
     return (
 
         <div className={`${visibility ? 'fixed' : 'hidden'} 
-                        w-screen h-screen top-0 left-0 flex 
+                        w-screen h-screen top-0 left-0 flex z-50
                         items-center justify-center bg-[rgba(0,0,0,0.5)]`}>
-            <div className="bg-lighter-bg z-50 rounded-3xl grid
+            <div className="bg-lighter-bg rounded-3xl grid
                             items-center place-items-center
                             max-w-[25rem] md:max-w-[30rem]
                             w-full

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 *{
-  @apply box-border text-text 
+  @apply box-border text-text font-body 
 }
 
 body{
@@ -11,5 +11,9 @@ body{
 }
 
 input, textarea{
-  @apply bg-text text-background text-base
+  @apply bg-text text-background text-base font-medium
+}
+
+button{
+  @apply font-heading hover:bg-[#48AEE9] disabled:hover:bg-accent
 }

@@ -11,7 +11,7 @@ const createEntry = async (req, res) => {
         const newEvent = await Entry.create({
             name: name ? name : "Faceless",
             title,
-            body,
+            body: String(body).trim(),
             tags
         })
 
@@ -72,7 +72,7 @@ const updateEntry = async (req, res) => {
 
         // Make an update to an entry in the database
         const updatedData = req.body;
-        const updatedEntry = await Entry.findByIdAndUpdate(req.params.id, updatedData, { new: true });
+        const updatedEntry = await Entry.findByIdAndUpdate(req.params.id, { ...updatedData, body: String(req.body.body).trim() }, { new: true });
 
         // Check if the provided ID is present to any entry
         if (!updatedEntry) return res.json({ "Error": "The ID is not present to any entry" });

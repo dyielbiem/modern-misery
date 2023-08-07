@@ -4,7 +4,7 @@ import EntryDetails from '../components/EntryDetails'
 import EntryForm from "../components/EntryForm";
 import { useEntryContext } from "../hooks/useEntryContext";
 import fetchEntries from "../utils/FetchEntries";
-import { GiFountainPen } from 'react-icons/gi'
+import { GiFeather } from 'react-icons/gi'
 
 
 const Home = () => {
@@ -58,8 +58,8 @@ const Home = () => {
                                p-4 sm:px-6
                                sm:py-4`}
                 onClick={showMobileEntryForm}>
-                <GiFountainPen className="text-2xl scale-x-[-1]" />
-                <span className="text-xl font-bold
+                <GiFeather className="text-2xl" />
+                <span className="text-xl font-bold font-heading
                                  hidden sm:inline" >Submit entry</span>
             </button>
         </div >

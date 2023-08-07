@@ -15,9 +15,9 @@ const SubmitModal = ({ display, closeModal, id }) => {
                             rounded-2xl">
                 <h2 className="font-semibold text-center
                                text-sm sm:text-lg">Your entry has been submitted!</h2>
-                <h3 className="font-extrabold text-center
-                               text-md sm:text-2xl lg:text-3xl">ID: {" "}
-                    <span className="break-all">{id}</span>
+                <h3 className="font-bold text-center
+                               text-md sm:text-2xl lg:text-3xl font-heading">ID: {" "}
+                    <span className="break-all font-heading">{id}</span>
                 </h3>
                 <p className="text-center
                               max-w-[40ch]
