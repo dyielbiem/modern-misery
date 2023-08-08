@@ -61,12 +61,20 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
     // Submit the new entry
     const handleSubmit = (event) => {
         event.preventDefault();
+        let unRegisterTag = "";
+
+        if (String(tagRef.current.value).trim().at(0) === "#") {
+            unRegisterTag = String(tagRef.current.value).trim().slice(1);
+        } else {
+            unRegisterTag = String(tagRef.current.value).trim();
+        }
+
         const newEntry = {
             title,
             name: name.at(0) === "@" ? name.slice(1) : name,
             body,
-            tags: (String(tagRef.current.value).trim() === "") ? newTags :
-                [...newTags, String(tagRef.current.value).trim()]
+            tags: (unRegisterTag === "") ? newTags :
+                [...newTags, unRegisterTag]
         }
 
         switch (type) {
@@ -124,6 +132,7 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
         setNewTags(updatedTags);
     }
 
+    // Call this function to add new tag
     const newTagAction = () => {
         const newTag = tagRef.current.value.at(0) === "#" ? tagRef.current.value.slice(1)
             : tagRef.current.value;
@@ -147,7 +156,7 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
         }
     }
 
-    // Add the tag if tab or enter key is clicked
+    // Add the tag if space key is clicked
     const spaceClick = (event) => {
         if (!String(tagRef.current.value).trim()) return
         if (event.target.value.at(-1) === " ") {
