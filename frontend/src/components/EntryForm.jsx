@@ -222,7 +222,7 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
                             </div>
                         ))}
                         <input placeholder="Tags (Optional)" ref={tagRef} onKeyDown={tabEnterClick}
-                            className="outline-none py-1 flex-1" onInput={spaceClick} />
+                            className="outline-none py-1 flex-1 min-w-[20%]" onInput={spaceClick} />
                     </div>
                     <button type="submit"
                         className={`rounded-full text-text
