@@ -125,10 +125,26 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
     }
 
     // Add the tag if tab key is clicked
-    const tabKeyClick = (event) => {
+    const tabEnterClick = (event) => {
         if (!String(tagRef.current.value).trim()) return
-        if (event.key === 'Tab' || event.key === " " || event.keyCode === 32) {
+        if (event.key === 'Tab' || event.key === 'Enter' || event.keyCode === 13) {
 
+            const newTag = tagRef.current.value;
+            setNewTags((prevTags) => [...prevTags, newTag]);
+
+            tagRef.current.value = "";
+            event.preventDefault();
+
+            if (newTags) {
+                tagRef.current.placeholder = "";
+            }
+        }
+    }
+
+    const spaceClick = (event) => {
+        if (!String(tagRef.current.value).trim()) return
+        if (event.target.value.at(-1) === " ") {
+            console.log(event.target.value.at(-1))
             const newTag = tagRef.current.value;
             setNewTags((prevTags) => [...prevTags, newTag]);
 
@@ -189,25 +205,25 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
                             onClick={() => setVisibility(false)} />
                     </div>
                     <input type="text" onChange={e => setTitle(e.target.value)}
-                        value={title} placeholder="Title" className="px-2 py-2 rounded-lg outline-none" />
+                        value={title} placeholder="Title (Required)" className="px-2 py-2 rounded-lg outline-none" />
                     <textarea type="text" onChange={e => setBody(e.target.value)}
-                        value={body} placeholder="Description" rows="4"
+                        value={body} placeholder="Description (Required)" rows="4"
                         className="px-2 py-2 rounded-lg resize-none outline-none" />
                     <input type="text" onChange={e => setName(e.target.value)}
                         value={name} placeholder="Username (Optional)"
                         className="px-2 py-2 rounded-lg outline-none" />
-                    <div className="rounded-lg px-2 py-2 bg-text flex gap-1 flex-wrap">
+                    <div className="rounded-lg px-2 py-2 bg-text flex gap-1 flex-wrap ">
                         {newTags && newTags.map((newTag, index) => (
                             <div key={index} className="flex bg-primary text-background px-2 rounded-lg gap-1 items-center justify-center" >
                                 <span className="text-background font-semibold break-all">
                                     {newTag}
                                 </span>
-                                <button type="button" className="font-extrabold text-2xl items-center"
+                                <button type="button" className="font-extrabold text-2xl items-center hover:bg-inherit"
                                     onClick={() => deleteTag(index)}>×</button>
                             </div>
                         ))}
-                        <input placeholder="Tags (Optional)" ref={tagRef} onKeyDown={tabKeyClick}
-                            className="outline-none py-1" />
+                        <input placeholder="Tags (Optional)" ref={tagRef} onKeyDown={tabEnterClick}
+                            className="outline-none py-1 flex-1" onInput={spaceClick} />
                     </div>
                     <button type="submit"
                         className={`rounded-full text-text
