@@ -127,7 +127,7 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
     // Add the tag if tab key is clicked
     const tabKeyClick = (event) => {
         if (!String(tagRef.current.value).trim()) return
-        if (event.key === 'Tab' || event.key === " ") {
+        if (event.key === 'Tab' || event.key === " " || event.keyCode === 32) {
 
             const newTag = tagRef.current.value;
             setNewTags((prevTags) => [...prevTags, newTag]);
