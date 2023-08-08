@@ -24,7 +24,7 @@ const SearchEntry = () => {
     // Fetch the entry using the ID 
     const fetchEntry = async () => {
         try {
-            const entryResponse = await fetch(`https://modern-misery-backend.onrender.com/${params.id}`);
+            const entryResponse = await fetch(`https://modern-misery-backend.onrender.com/api/entries/${params.id}`);
 
             if (!entryResponse.ok) return console.log(entryResponse);
 
