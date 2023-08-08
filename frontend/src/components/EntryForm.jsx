@@ -125,12 +125,13 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
     }
 
     const newTagAction = () => {
-        const newTag = tagRef.current.value;
+        const newTag = tagRef.current.value.at(0) === "#" ? tagRef.current.value.slice(1)
+            : tagRef.current.value;
 
-        setNewTags((prevTags) => [...prevTags, newTag.at(0) === "#" ? newTag.slice(1) : newTag]);
+        if (!String(newTag).trim()) return;
+        setNewTags((prevTags) => [...prevTags, newTag]);
 
         tagRef.current.value = "";
-        event.preventDefault();
 
         if (newTags) {
             tagRef.current.placeholder = "";
@@ -141,6 +142,7 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
     const tabEnterClick = (event) => {
         if (!String(tagRef.current.value).trim()) return
         if (event.key === 'Tab' || event.key === 'Enter' || event.keyCode === 13) {
+            event.preventDefault();
             newTagAction();
         }
     }
@@ -149,6 +151,7 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
     const spaceClick = (event) => {
         if (!String(tagRef.current.value).trim()) return
         if (event.target.value.at(-1) === " ") {
+            event.preventDefault();
             newTagAction();
         }
     }
