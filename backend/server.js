@@ -11,7 +11,7 @@ const backendRoutes = require('./routes/router');
 const app = express();
 
 const corsOptions = {
-    origin: 'https://main--tranquil-madeleine-571c69.netlify.app',
+    origin: 'https://modernmisery.netlify.app',
     methods: ['GET', 'POST', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
