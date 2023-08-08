@@ -11,7 +11,7 @@ const backendRoutes = require('./routes/router');
 const app = express();
 
 // Allow frontend to access the backend server
-app.use(cors({ origin: 'http://localhost:5173' }))
+app.use(cors({ origin: 'https://main--tranquil-madeleine-571c69.netlify.app/' }))
 
 
 // middleware for identifying HTTP requests
