@@ -5,7 +5,7 @@ export const handleDelete = async (parameter) => {
     if (input !== "confirm") return
 
     try {
-        const deletedEntry = await fetch(`http://localhost:4000/api/entries/${params.id}`, {
+        const deletedEntry = await fetch(`https://modern-misery-backend.onrender.com/${params.id}`, {
             method: "DELETE",
             headers: {
                 'Content-type': 'application/json'

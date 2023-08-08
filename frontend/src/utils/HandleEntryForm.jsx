@@ -6,7 +6,7 @@ export const createEntry = async (parameter) => {
 
     try {
         // Post request
-        const res = await fetch("http://localhost:4000/api/entries", {
+        const res = await fetch("https://modern-misery-backend.onrender.com/api/entries", {
             method: 'POST',
             body: JSON.stringify(newEntry),
             headers: {
@@ -51,7 +51,7 @@ export const updateEntry = async (parameter) => {
 
     try {
 
-        const res = await fetch(`http://localhost:4000/api/entries/${id}`, {
+        const res = await fetch(`https://modern-misery-backend.onrender.com/api/entries/${id}`, {
             method: "PATCH",
             body: JSON.stringify(updatedEntry),
             headers: {

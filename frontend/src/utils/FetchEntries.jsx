@@ -2,7 +2,7 @@
 // Get all the entries from the backend API
 const fetchEntries = async (dispatch) => {
     try {
-        const entryResponse = await fetch('http://localhost:4000/api/entries');
+        const entryResponse = await fetch('https://modern-misery-backend.onrender.com/api/entries');
 
         if (!entryResponse.ok) return console.log(entryResponse);
 
