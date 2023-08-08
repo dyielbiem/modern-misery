@@ -10,8 +10,15 @@ const backendRoutes = require('./routes/router');
 // express app
 const app = express();
 
+const corsOptions = {
+    origin: 'https://main--tranquil-madeleine-571c69.netlify.app',
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+};
+
 // Allow frontend to access the backend server
-app.use(cors({ origin: 'https://main--tranquil-madeleine-571c69.netlify.app/' }))
+app.use(cors(corsOptions))
 
 
 // middleware for identifying HTTP requests
