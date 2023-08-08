@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-
 import EntryDetails from '../components/EntryDetails'
 import EntryForm from "../components/EntryForm";
 import { useEntryContext } from "../hooks/useEntryContext";
 import fetchEntries from "../utils/FetchEntries";
-import { GiFeather } from 'react-icons/gi'
+import { PiPenNibBold } from 'react-icons/pi'
 
 
 const Home = () => {
@@ -55,10 +54,10 @@ const Home = () => {
                                right-8 sm:right-10
                                ${entryFormVisibility ? 'hidden' : 'flex'} lg:hidden
                                gap-2
-                               p-4 sm:px-6
+                               p-4 sm:px-5
                                sm:py-4`}
                 onClick={showMobileEntryForm}>
-                <GiFeather className="text-2xl" />
+                <PiPenNibBold className="text-2xl" />
                 <span className="text-xl font-bold font-heading
                                  hidden sm:inline" >Submit entry</span>
             </button>

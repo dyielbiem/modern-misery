@@ -56,7 +56,7 @@ const DeleteEntry = ({ visibility, setShowDelete }) => {
                                 p-6 sm:p-12
                                 gap-y-2 sm:gap-y-3'>
                     <IoCloseSharp className='self-end bg-secondary rounded-full p-2
-                                            text-4xl'
+                                            text-4xl cursor-pointer'
                         onClick={() => setShowDelete(false)} />
                     <PiSealWarningFill className='fill-red-800
                                                   text-7xl lg:text-8xl' />

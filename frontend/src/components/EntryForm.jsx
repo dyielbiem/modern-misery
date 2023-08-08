@@ -199,7 +199,7 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
                                 mb-2">
                         <h2 className="text-2xl lg:text-3xl font-heading
                                        font-bold ">{formHeader}</h2>
-                        <AiOutlineClose className="text-4xl bg-secondary p-2
+                        <AiOutlineClose className="text-4xl bg-secondary p-2 cursor-pointer
                                                lg:hidden rounded-full"
                             onClick={() => setVisibility(false)} />
                     </div>
