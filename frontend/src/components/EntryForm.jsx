@@ -63,7 +63,7 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
         event.preventDefault();
         const newEntry = {
             title,
-            name,
+            name: name.at(0) === "@" ? name.slice(1) : name,
             body,
             tags: (String(tagRef.current.value).trim() === "") ? newTags :
                 [...newTags, String(tagRef.current.value).trim()]
@@ -124,36 +124,32 @@ const EntryForm = ({ type, buttonText, formHeader, getUpdatedEntry,
         setNewTags(updatedTags);
     }
 
-    // Add the tag if tab key is clicked
-    const tabEnterClick = (event) => {
-        if (!String(tagRef.current.value).trim()) return
-        if (event.key === 'Tab' || event.key === 'Enter' || event.keyCode === 13) {
+    const newTagAction = () => {
+        const newTag = tagRef.current.value;
 
-            const newTag = tagRef.current.value;
-            setNewTags((prevTags) => [...prevTags, newTag]);
+        setNewTags((prevTags) => [...prevTags, newTag.at(0) === "#" ? newTag.slice(1) : newTag]);
 
-            tagRef.current.value = "";
-            event.preventDefault();
+        tagRef.current.value = "";
+        event.preventDefault();
 
-            if (newTags) {
-                tagRef.current.placeholder = "";
-            }
+        if (newTags) {
+            tagRef.current.placeholder = "";
         }
     }
 
+    // Add the tag if tab or enter key is clicked
+    const tabEnterClick = (event) => {
+        if (!String(tagRef.current.value).trim()) return
+        if (event.key === 'Tab' || event.key === 'Enter' || event.keyCode === 13) {
+            newTagAction();
+        }
+    }
+
+    // Add the tag if tab or enter key is clicked
     const spaceClick = (event) => {
         if (!String(tagRef.current.value).trim()) return
         if (event.target.value.at(-1) === " ") {
-            console.log(event.target.value.at(-1))
-            const newTag = tagRef.current.value;
-            setNewTags((prevTags) => [...prevTags, newTag]);
-
-            tagRef.current.value = "";
-            event.preventDefault();
-
-            if (newTags) {
-                tagRef.current.placeholder = "";
-            }
+            newTagAction();
         }
     }
 
