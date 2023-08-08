@@ -41,7 +41,7 @@ const SearchBar = ({ setSmallScreenVisibility, smallScreenVisibility }) => {
                 placeholder="Search Your Entry"
                 onKeyDown={handleEnter}
                 className={`outline-none
-                            w-auto
+                            w-auto flex-1
                             max-w-[25ch]
                             block`} />
         </div>
